@@ -37,14 +37,19 @@ class Piece {
         King: 5,
         Empty: 6,
     }
+    Color = {
+        White: 0,
+        Black: 1,
+    }
    
-    constructor(t, x, y) {
+    constructor(t, c, x, y) {
       this.piece = t;
+      this.color = c;
       this.x = x;
       this.y = y;
     }
     toString() {
-      return `type.${this.type}`+` x.${this.x}`+` y.${this.y}`;
+      return `type.${this.type}`+` x.${this.x}`+` y.${this.y}`+` color.${this.color}`;
     }
 }
 
@@ -90,8 +95,16 @@ async function printBoard(){
             if(board[g][h].piece==6){
                 symbol=' ';
             }
+            var color = '#CDA1A1';
+            if(board[g][h].color==0){
+                color = '#CDA1A1';
+            }
+            if(board[g][h].color==0){
+                color = '#0C0B0B';
+            }
             console.log("board[g][h].piece:", board[g][h].piece);
             console.log("symbol:", symbol);
+            ctx.fillStyle = color;
             ctx.fillText(symbol, x0+(g*x_delta), y0+(h*y_delta));
         }
     }
@@ -102,28 +115,28 @@ async function getBoard(){
 
 
     let row1 = [];
-    let p1 = new Piece(3, 0, 0);
+    let p1 = new Piece(3, 0, 0, 0);
     console.log(p1);
     row1.push(p1);
-    let p3 = new Piece(2, 0, 0);
+    let p3 = new Piece(2, 0, 0, 0);
     console.log(p3);
     row1.push(p3);
-    let p4 = new Piece(1, 0, 0);
+    let p4 = new Piece(1, 0, 0, 0);
     console.log(p4);
     row1.push(p4);
-    let p5 = new Piece(4, 0, 0);
+    let p5 = new Piece(4, 0, 0, 0);
     console.log(p5);
     row1.push(p5);
-    let p6 = new Piece(5, 0, 0);
+    let p6 = new Piece(5, 0, 0, 0);
     console.log(p6);
     row1.push(p6);
-    let p7 = new Piece(1, 0, 0);
+    let p7 = new Piece(1, 0, 0, 0);
     console.log(p7);
     row1.push(p7);
-    let p8 = new Piece(2, 0, 0);
+    let p8 = new Piece(2, 0, 0, 0);
     console.log(p8);
     row1.push(p8);
-    let p9 = new Piece(3, 0, 0);
+    let p9 = new Piece(3, 0, 0, 0);
     console.log(p9);
     row1.push(p9);
     board.push(row1);
@@ -132,7 +145,7 @@ async function getBoard(){
 
     let row2 = [];
     for(var i = 0; i < 8; i++){
-        let p = new Piece(0, i, 0);
+        let p = new Piece(0, 0, i, 0);
         console.log(p);
         row2.push(p);
     }
@@ -141,7 +154,7 @@ async function getBoard(){
 
     let row3 = [];
     for(var i = 0; i < 8; i++){
-        let p = new Piece(6, i, 3);
+        let p = new Piece(6, 0, i, 3);
         console.log(p);
         row3.push(p);
     }
@@ -150,7 +163,7 @@ async function getBoard(){
 
     let row4 = [];
     for(var i = 0; i < 8; i++){
-        let p = new Piece(6, i, 4);
+        let p = new Piece(6, 0, i, 4);
         console.log(p);
         row4.push(p);
     }
@@ -158,7 +171,7 @@ async function getBoard(){
 
     let row5 = [];
     for(var i = 0; i < 8; i++){
-        let p = new Piece(6, i, 5);
+        let p = new Piece(6, 0, i, 5);
         console.log(p);
         row5.push(p);
     }
@@ -167,7 +180,7 @@ async function getBoard(){
 
     let row6 = [];
     for(var i = 0; i < 8; i++){
-        let p = new Piece(6, i, 6);
+        let p = new Piece(6, 0, i, 6);
         console.log(p);
         row6.push(p);
     }
@@ -176,7 +189,7 @@ async function getBoard(){
 
     let row7 = [];
     for(var i = 0; i < 8; i++){
-        let p = new Piece(0, i, 0);
+        let p = new Piece(0, 1, i, 0);
         console.log(p);
         row7.push(p);
     }
@@ -184,28 +197,28 @@ async function getBoard(){
 
 
     let row8 = [];
-    let m1 = new Piece(3, 0, 0);
+    let m1 = new Piece(3, 1, 0, 0);
     console.log(p1);
     row8.push(m1);
-    let m3 = new Piece(2, 0, 0);
+    let m3 = new Piece(2, 1, 0, 0);
     console.log(p3);
     row8.push(m3);
-    let m4 = new Piece(1, 0, 0);
+    let m4 = new Piece(1, 1, 0, 0);
     console.log(p4);
     row8.push(m4);
-    let m5 = new Piece(4, 0, 0);
+    let m5 = new Piece(4, 1, 0, 0);
     console.log(m5);
     row8.push(m5);
-    let m6 = new Piece(5, 0, 0);
+    let m6 = new Piece(5, 1, 0, 0);
     console.log(p6);
     row8.push(m6);
-    let m7 = new Piece(1, 0, 0);
+    let m7 = new Piece(1, 1, 0, 0);
     console.log(m7);
     row8.push(m7);
-    let m8 = new Piece(2, 0, 0);
+    let m8 = new Piece(2, 1, 0, 0);
     console.log(m8);
     row8.push(m8);
-    let m9 = new Piece(3, 0, 0);
+    let m9 = new Piece(3, 1, 0, 0);
     console.log(m9);
     row8.push(m9);
 
@@ -388,9 +401,6 @@ async function fillPieces(values=null) {
     while(board.length < 1){
         await sleep(1000);
     }
-
-
-
 
 }
 
